@@ -1,0 +1,47 @@
+# Fotografías y resultados locales
+entrada/
+originales/
+resultados/
+restauradas/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.bmp
+*.tif
+*.tiff
+
+# Excepciones: permitir imágenes de documentación si se añaden a propósito
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.webp
+
+# Pesos y modelos (archivos grandes; alojarlos solo tras revisar sus licencias)
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+weights/
+checkpoints/
+
+# Entornos y cachés de Python/Jupyter
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.cache/
+
+# Archivos del sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+*token*
+*credentials*.json
