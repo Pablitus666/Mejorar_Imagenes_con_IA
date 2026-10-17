@@ -1,8 +1,20 @@
-# Fotografías y resultados locales
+# ============================================================
+# Mejorar_Imagenes_con_IA
+# Archivos locales que no deben subirse al repositorio
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. Fotografías personales y resultados locales
+# ------------------------------------------------------------
 entrada/
 originales/
 resultados/
 restauradas/
+final_results/
+outputs/
+output/
+
+# Ignorar imágenes por defecto en el resto del repositorio
 *.jpg
 *.jpeg
 *.png
@@ -10,38 +22,129 @@ restauradas/
 *.bmp
 *.tif
 *.tiff
+*.gif
+*.heic
+*.heif
+*.avif
 
-# Excepciones: permitir imágenes de documentación si se añaden a propósito
-!docs/**/*.png
+# Permitir todas las imágenes dentro de images/
+!images/
+!images/**
+
+# Permitir imágenes de documentación en docs/, si existe
+!docs/
 !docs/**/*.jpg
+!docs/**/*.jpeg
+!docs/**/*.png
 !docs/**/*.webp
+!docs/**/*.bmp
+!docs/**/*.tif
+!docs/**/*.tiff
+!docs/**/*.gif
+!docs/**/*.avif
 
-# Pesos y modelos (archivos grandes; alojarlos solo tras revisar sus licencias)
+# ------------------------------------------------------------
+# 2. Archivos de Adobe Photoshop
+# ------------------------------------------------------------
+*.psd
+*.PSD
+*.psb
+*.PSB
+
+# ------------------------------------------------------------
+# 3. Modelos y pesos de inteligencia artificial
+# ------------------------------------------------------------
 *.pth
 *.pt
 *.ckpt
 *.safetensors
+*.onnx
+*.engine
+
 weights/
 checkpoints/
 
-# Entornos y cachés de Python/Jupyter
+# ------------------------------------------------------------
+# 4. Archivos comprimidos locales
+# ------------------------------------------------------------
+CodeFormer.zip
+
+# ------------------------------------------------------------
+# 5. Python: cachés y archivos generados
+# ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ------------------------------------------------------------
+# 6. Entornos virtuales
+# ------------------------------------------------------------
 .venv/
 venv/
 env/
-__pycache__/
-*.py[cod]
-.ipynb_checkpoints/
-.cache/
+ENV/
 
-# Archivos del sistema operativo y editores
+# ------------------------------------------------------------
+# 7. Jupyter Notebook
+# ------------------------------------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------
+# 8. Cachés y archivos temporales
+# ------------------------------------------------------------
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------
+# 9. Registros
+# ------------------------------------------------------------
+*.log
+
+# ------------------------------------------------------------
+# 10. Archivos del sistema operativo
+# ------------------------------------------------------------
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ------------------------------------------------------------
+# 11. Configuración de editores e IDE
+# ------------------------------------------------------------
 .vscode/
 .idea/
 
-# Secretos y configuración local
+# ------------------------------------------------------------
+# 12. Secretos y credenciales
+# ------------------------------------------------------------
 .env
 .env.*
 !.env.example
+
 *token*
 *credentials*.json
+
+# ------------------------------------------------------------
+# 13. Archivos locales de configuración
+# ------------------------------------------------------------
+config.local.*
+settings.local.*
+secrets/
