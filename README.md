@@ -153,10 +153,10 @@ El estado estable refleja las pruebas realizadas hasta el momento. No implica qu
 
 ## 👨‍💻 Autor
 
-**Walter Pablo Téllez Ayala**
-Software Developer
-📍 Bolivia 🇧🇴 <img src="https://flagcdn.com/w20/bo.png" width="20" alt="Bandera de Bolivia">
-📧 [pharmakoz@gmail.com](mailto:pharmakoz@gmail.com)
+**Walter Pablo Téllez Ayala**  
+Software Developer  
+📍 Bolivia 🇧🇴 <img src="https://flagcdn.com/w20/bo.png" width="20"/><br>
+📧 pharmakoz@gmail.com
 
 © 2026 — Improbe Images
 
