@@ -18,11 +18,17 @@ El cuaderno verifica los archivos descargados mediante sus hashes SHA-256 antes 
 
 Si un archivo existente no supera la comprobación, el cuaderno intenta obtener una copia válida nuevamente.
 
+La verificación se apoya en una caché de hashes: si el archivo y su firma no cambiaron, se reutiliza el SHA-256 guardado; si cambia, se vuelve a comprobar antes de usar el peso.
+
 ## Relación con HYPIR
 
 HYPIR se prepara mediante un flujo independiente. Su código, sus pesos y los componentes base de Stable Diffusion 2.1 se gestionan mediante las fuentes y cachés configuradas por el cuaderno.
 
 **Este Release no incluye los pesos de HYPIR ni los de Stable Diffusion 2.1.** Su redistribución debe evaluarse por separado conforme a las condiciones de sus respectivos proyectos.
+
+## Compatibilidad con el cuaderno v8
+
+El cuaderno actual (v8) mantiene los cinco pesos de este Release y sus hashes SHA-256. No se requieren archivos nuevos ni cambios en los pesos; la preparación los descarga, verifica y conserva en la caché de Drive cuando está disponible. HYPIR y Stable Diffusion 2.1 siguen gestionándose por separado.
 
 ## Licencias y atribución
 

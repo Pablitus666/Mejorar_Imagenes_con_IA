@@ -35,6 +35,9 @@ Cuaderno de Google Colab para restaurar y ampliar fotografías con inteligencia 
 - ⚡ Modo rápido opcional de HYPIR, con menos solapamiento entre regiones; puede afectar a detalles locales.
 - ♻️ Caché de inferencia de HYPIR para reutilizar resultados cuando coinciden la imagen de entrada y los parámetros relevantes.
 - ☁️ Caché persistente de código y modelos en Google Drive para reducir descargas repetidas entre sesiones.
+- 🔎 Aviso de escala efectiva cuando CodeFormer amplía internamente imágenes con un lado menor a 512 px.
+- ⏱️ Medición de tiempos de preparación e inferencia en HYPIR y CodeFormer.
+- 🧪 Diagnóstico posterior de la sesión, con informe descargable de versiones, rutas y pesos.
 - 🖼️ Comparación visual del original y el resultado restaurado.
 - 📥 Descarga de la imagen final desde Google Colab.
 - ☁️ Copia de originales y resultados en Google Drive cuando está conectado.
@@ -50,6 +53,7 @@ Cuaderno de Google Colab para restaurar y ampliar fotografías con inteligencia 
 7. Ejecuta **04 · Restaurar la imagen**.
 8. Revisa el resultado en **05 · Comparar el antes y el después**.
 9. Ejecuta **06 · Descargar la imagen restaurada** cuando estés conforme con el resultado.
+10. Opcional: ejecuta **07 · Diagnóstico posterior** para guardar un informe del entorno y las versiones de la sesión.
 
 La disponibilidad de GPU depende de Google Colab y no está garantizada. Sin GPU, el procesamiento puede ser considerablemente más lento.
 
@@ -58,6 +62,8 @@ La disponibilidad de GPU depende de Google Colab y no está garantizada. Sin GPU
 La preparación puede tardar varios minutos porque instala o comprueba dependencias, obtiene código de los repositorios oficiales y descarga los pesos necesarios.
 
 **CodeFormer** obtiene el código del repositorio oficial. Los cinco archivos de pesos configurados para este flujo se descargan desde el Release del proyecto y se verifican mediante SHA-256. Si un archivo existente no coincide con el hash esperado, el cuaderno intenta descargarlo nuevamente.
+
+La verificación SHA-256 de los pesos utiliza una caché persistente. Si el archivo y su firma no cambiaron, reutiliza el hash guardado y evita releerlo completo en cada sesión; si detecta un cambio, vuelve a comprobarlo antes de usarlo.
 
 **HYPIR** utiliza una revisión concreta del repositorio oficial (`b61d107`) descargada como ZIP. El archivo se conserva en la caché de Google Drive para evitar volver a descargarlo en sesiones posteriores. Los pesos de HYPIR y el modelo base Stable Diffusion 2.1 se gestionan mediante sus propias rutas y cachés.
 
@@ -85,6 +91,7 @@ Si Google Colab reinicia el entorno, vuelve a ejecutar la preparación antes de 
 - Para priorizar la calidad de HYPIR, conserva el modo habitual con mayor solapamiento. El modo rápido sigue disponible como alternativa opcional.
 - Las mejoras adicionales pueden aumentar el tiempo de procesamiento y el uso de memoria.
 - En imágenes de más de 20 megapíxeles, empieza por una ampliación menor si dispones de recursos limitados.
+- Si el lado menor de la imagen es inferior a 512 px, CodeFormer lo amplía internamente a 512 px antes de aplicar la escala elegida; el resultado puede ser mayor que 2x o 4x. El cuaderno muestra el tamaño efectivo estimado antes de procesar.
 - La ampliación 4x y las mejoras adicionales pueden superar la memoria disponible, especialmente en imágenes grandes.
 - Comprueba los rostros y detalles importantes: los modelos generativos pueden reconstruir detalles que no estaban claramente presentes en la fotografía original.
 
@@ -93,6 +100,10 @@ Si Google Colab reinicia el entorno, vuelve a ejecutar la preparación antes de 
 El cuaderno puede reutilizar el resultado de una inferencia anterior cuando la imagen de entrada y los parámetros relevantes coinciden. Si cambia la imagen o un parámetro que determina la inferencia, será necesario procesarla de nuevo. Los cambios que solo afectan a la combinación visual final pueden aprovechar la inferencia guardada cuando corresponda.
 
 La caché evita trabajo repetido, pero no elimina el coste de la primera inferencia. Los archivos de caché dependen de las rutas configuradas y del almacenamiento disponible.
+
+### Diagnóstico posterior
+
+La celda **07 · Diagnóstico posterior** registra, en la misma sesión, las versiones instaladas, las rutas, los pesos, los marcadores y los tiempos de preparación. Genera `diagnosticos/diagnostico_post_*.txt` en Google Drive cuando está montado y lo descarga. No instala dependencias ni altera el flujo: solo escribe el informe, que es opcional y sirve para conservar evidencia del entorno.
 
 ## 🧭 Orientación EXIF
 
@@ -157,6 +168,8 @@ Este repositorio organiza el flujo de trabajo y la experiencia de uso. No implic
 
 **Estado: estable, con pruebas funcionales satisfactorias en Google Colab.**
 
+**Versión del cuaderno:** v8 — memoria, integridad y conservación de originales.
+
 - [x] Preparación del entorno y comprobación de dependencias.
 - [x] Descarga y verificación SHA-256 de los cinco pesos configurados para CodeFormer.
 - [x] Selección y carga de una fotografía por vez.
@@ -171,6 +184,12 @@ Este repositorio organiza el flujo de trabajo y la experiencia de uso. No implic
 - [x] Descarga del resultado.
 - [x] Copia en Google Drive cuando está conectado.
 - [x] Pruebas funcionales con fotografías de diferentes dimensiones y orientaciones.
+- [x] Identificación de imágenes por contenido y validación de parámetros y dimensiones antes de reutilizar resultados.
+- [x] Copia verificada de la caché de Stable Diffusion 2.1 al almacenamiento temporal de cada sesión.
+- [x] Caché SHA-256 v2 de los pesos, con reutilización del hash cuando la firma no cambió.
+- [x] Aviso de escala efectiva cuando el lado menor es inferior a 512 px.
+- [x] Diagnóstico posterior de la sesión con informe descargable.
+- [x] Pruebas reales con 0.04 MP y 1.2 MP, en 2x y 4x, con HYPIR y CodeFormer.
 
 El estado estable refleja las pruebas realizadas hasta el momento. No implica que se hayan probado todas las combinaciones de modelos, formatos, resoluciones y recursos disponibles en Google Colab.
 
@@ -204,6 +223,8 @@ Estos archivos contienen los pesos necesarios para ejecutar el cuaderno de Googl
 - `parsing_parsenet.pth` — modelo de análisis y segmentación facial.
 - `RealESRGAN_x2plus.pth` — modelo opcional para mejorar la resolución del fondo.
 - `yolov5l-face.pth` — pesos utilizados para la detección facial en el flujo de restauración.
+
+El cuaderno v8 mantiene estos cinco archivos y sus hashes SHA-256; no requiere pesos adicionales para el flujo CodeFormer.
 
 ### Integridad de los archivos
 

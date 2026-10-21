@@ -22,12 +22,21 @@ except Exception as e:
     print("PyTorch: ERROR", repr(e))
 
 packages = [
-    "basicsr", "facexlib", "gfpgan", "realesrgan",
+    # Stack que ya aporta Google Colab; el cuaderno no lo reinstala.
     "torch", "torchvision", "torchaudio",
+    # Requisitos que el cuaderno instala para el flujo CodeFormer.
     "numpy", "Pillow", "opencv-python", "opencv-python-headless",
-    "scipy", "tqdm", "yapf", "lmdb", "pyyaml",
-    "addict", "future", "requests", "matplotlib", "ipywidgets"
+    "scipy", "scikit-image", "tqdm", "yapf", "lmdb", "pyyaml",
+    "addict", "future", "requests", "tb-nightly", "lpips", "gdown",
+    # Requisitos que el cuaderno instala para el flujo HYPIR.
+    "accelerate", "diffusers", "transformers", "peft", "einops",
+    "omegaconf", "timm", "huggingface_hub",
+    # Interfaz del cuaderno y utilidades de Colab.
+    "matplotlib", "ipywidgets",
 ]
+# Nota: "basicsr", "facexlib", "gfpgan" y "realesrgan" NO se instalan como
+# paquetes en este proyecto. "basicsr" y "facelib" forman parte del código
+# fuente de CodeFormer y el cuaderno los importa desde esa carpeta.
 print("\nVersiones de paquetes:")
 for package in packages:
     try:
@@ -45,6 +54,12 @@ for p in [
     Path("/content/drive/MyDrive/Mejorar_Imagenes_con_IA/CodeFormer"),
 ]:
     print(f"{p}: existe={p.exists()} ; inference_codeformer.py={(p / 'inference_codeformer.py').exists()}")
+    print(
+        "    módulos locales: "
+        f"basicsr={(p / 'basicsr' / '__init__.py').exists()} ; "
+        f"facelib={(p / 'facelib' / '__init__.py').exists()} ; "
+        f"pesos/facelib={(p / 'weights' / 'facelib').is_dir()}"
+    )
 
 # Opcional: guardar el diagnóstico en un archivo descargable desde Colab.
 salida = Path("/content/diagnostico_entorno_mejorar_imagenes.txt")
