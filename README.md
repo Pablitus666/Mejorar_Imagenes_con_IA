@@ -168,7 +168,7 @@ Este repositorio organiza el flujo de trabajo y la experiencia de uso. No implic
 
 **Estado: estable, con pruebas funcionales satisfactorias en Google Colab.**
 
-**Versión del cuaderno:** v8 — memoria, integridad y conservación de originales.
+**Versión interna:** v8 — memoria, integridad y conservación de originales (el archivo conserva el nombre `Mejorar_Imagenes_con_IA.ipynb`).
 
 - [x] Preparación del entorno y comprobación de dependencias.
 - [x] Descarga y verificación SHA-256 de los cinco pesos configurados para CodeFormer.
@@ -224,7 +224,7 @@ Estos archivos contienen los pesos necesarios para ejecutar el cuaderno de Googl
 - `RealESRGAN_x2plus.pth` — modelo opcional para mejorar la resolución del fondo.
 - `yolov5l-face.pth` — pesos utilizados para la detección facial en el flujo de restauración.
 
-El cuaderno v8 mantiene estos cinco archivos y sus hashes SHA-256; no requiere pesos adicionales para el flujo CodeFormer.
+El cuaderno principal mantiene estos cinco archivos y sus hashes SHA-256; no requiere pesos adicionales para el flujo CodeFormer.
 
 ### Integridad de los archivos
 

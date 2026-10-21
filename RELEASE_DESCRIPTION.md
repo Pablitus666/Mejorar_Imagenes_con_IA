@@ -26,9 +26,9 @@ HYPIR se prepara mediante un flujo independiente. Su código, sus pesos y los co
 
 **Este Release no incluye los pesos de HYPIR ni los de Stable Diffusion 2.1.** Su redistribución debe evaluarse por separado conforme a las condiciones de sus respectivos proyectos.
 
-## Compatibilidad con el cuaderno v8
+## Compatibilidad con el cuaderno principal
 
-El cuaderno actual (v8) mantiene los cinco pesos de este Release y sus hashes SHA-256. No se requieren archivos nuevos ni cambios en los pesos; la preparación los descarga, verifica y conserva en la caché de Drive cuando está disponible. HYPIR y Stable Diffusion 2.1 siguen gestionándose por separado.
+El cuaderno principal mantiene los cinco pesos de este Release y sus hashes SHA-256. No se requieren archivos nuevos ni cambios en los pesos; la preparación los descarga, verifica y conserva en la caché de Drive cuando está disponible. HYPIR y Stable Diffusion 2.1 siguen gestionándose por separado.
 
 ## Licencias y atribución
 
