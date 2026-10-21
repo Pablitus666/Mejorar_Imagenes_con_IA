@@ -168,7 +168,7 @@ Este repositorio organiza el flujo de trabajo y la experiencia de uso. No implic
 
 **Estado: estable, con pruebas funcionales satisfactorias en Google Colab.**
 
-**Versión interna:** v8 — memoria, integridad y conservación de originales (el archivo conserva el nombre `Mejorar_Imagenes_con_IA.ipynb`).
+**Enfoque actual:** memoria, integridad y conservación de originales.
 
 - [x] Preparación del entorno y comprobación de dependencias.
 - [x] Descarga y verificación SHA-256 de los cinco pesos configurados para CodeFormer.
