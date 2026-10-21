@@ -148,3 +148,15 @@ $RECYCLE.BIN/
 config.local.*
 settings.local.*
 secrets/
+
+# ------------------------------------------------------------
+# 14. Notas de sesión, diagnósticos e informes locales
+# ------------------------------------------------------------
+HANDOFF_*.md
+diagnosticos/
+diagnostico_post_*.txt
+diagnostico_colab_*.txt
+
+# Configuración local del agente; .opencode/tools sí se versiona
+.opencode/agents/
+.opencode/settings.local.json
