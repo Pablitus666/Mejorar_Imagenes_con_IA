@@ -187,7 +187,7 @@ Este repositorio organiza el flujo de trabajo y la experiencia de uso. No implic
 - No subas fotografías privadas, credenciales, tokens ni otros datos sensibles al repositorio.
 - Conserva las fotografías y los resultados en tu almacenamiento personal, como Google Drive.
 - La preparación descarga componentes externos y la ejecución utiliza la infraestructura de Google Colab; por tanto, el proyecto no es un flujo completamente offline.
-- Revisa los cambios antes de realizar un commit. `.gitignore` ayuda a evitar la inclusión accidental de archivos locales, pero no sustituye una revisión manual.
+
 
 ## 🗺️ Estado del proyecto
 
