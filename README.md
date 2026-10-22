@@ -44,16 +44,41 @@ Cuaderno de Google Colab para restaurar y ampliar fotografías con inteligencia 
 
 ## 🚀 Empezar en Google Colab
 
-1. Abre el repositorio: [Improve Images](https://github.com/Pablitus666/Mejorar_Imagenes_con_IA).
-2. Abre el cuaderno `.ipynb` desde GitHub o descárgalo y cárgalo en [Google Colab](https://colab.research.google.com/).
-3. En **Entorno de ejecución → Cambiar tipo de entorno de ejecución**, selecciona una GPU si está disponible.
-4. Ejecuta la celda **01 · Preparar el entorno** y espera a que finalicen las comprobaciones.
-5. En **02 · Elegir una fotografía**, sube una imagen o selecciona una disponible.
-6. En **03 · Ajustar la restauración**, elige el modelo y configura las opciones disponibles.
-7. Ejecuta **04 · Restaurar la imagen**.
-8. Revisa el resultado en **05 · Comparar el antes y el después**.
-9. Ejecuta **06 · Descargar la imagen restaurada** cuando estés conforme con el resultado.
-10. Opcional: ejecuta **07 · Diagnóstico posterior** para guardar un informe del entorno y las versiones de la sesión.
+### 📥 Descargar el cuaderno desde Releases
+
+El cuaderno se distribuye como archivo ZIP dentro del Release [`modelos-v1`](https://github.com/Pablitus666/Mejorar_Imagenes_con_IA/releases/tag/modelos-v1), junto con los pesos de CodeFormer.
+
+1. Descarga [`Mejorar_Imagenes_con_IA.zip`](https://github.com/Pablitus666/Mejorar_Imagenes_con_IA/releases/download/modelos-v1/Mejorar_Imagenes_con_IA.zip).
+2. Descomprime el archivo. Dentro encontrarás `Mejorar_Imagenes_con_IA.ipynb`.
+3. Entra en [Google Colab](https://colab.research.google.com/) y elige **Archivo → Subir cuaderno**.
+4. Selecciona el archivo `Mejorar_Imagenes_con_IA.ipynb`.
+
+**Integridad del ZIP** (125 KB):
+
+- SHA-256: `1251d384add65c3f3eef23e45c397f76f967879e0dd0b029194856115f8ae8e6`
+
+Puedes comprobarlo antes de subirlo:
+
+```powershell
+Get-FileHash .\Mejorar_Imagenes_con_IA.zip -Algorithm SHA256
+```
+
+```bash
+sha256sum Mejorar_Imagenes_con_IA.zip
+```
+
+> El ZIP contiene únicamente el cuaderno. En el mismo Release están los pesos de CodeFormer; HYPIR y Stable Diffusion 2.1 se descargan desde sus propias fuentes durante la preparación.
+
+### ▶️ Ejecutar el cuaderno
+
+1. En **Entorno de ejecución → Cambiar tipo de entorno de ejecución**, selecciona una GPU si está disponible.
+2. Ejecuta la celda **01 · Preparar el entorno** y espera a que finalicen las comprobaciones.
+3. En **02 · Elegir una fotografía**, sube una imagen o selecciona una disponible.
+4. En **03 · Ajustar la restauración**, elige el modelo y configura las opciones disponibles.
+5. Ejecuta **04 · Restaurar la imagen**.
+6. Revisa el resultado en **05 · Comparar el antes y el después**.
+7. Ejecuta **06 · Descargar la imagen restaurada** cuando estés conforme con el resultado.
+8. Opcional: ejecuta **07 · Diagnóstico posterior** para guardar un informe del entorno y las versiones de la sesión.
 
 La disponibilidad de GPU depende de Google Colab y no está garantizada. Sin GPU, el procesamiento puede ser considerablemente más lento.
 
@@ -237,6 +262,10 @@ CodeFormer se distribuye bajo la **NTU S-Lab License 1.0**. La redistribución y
 Los modelos adicionales conservan las condiciones de licencia establecidas por sus respectivos proyectos de origen. Consulta las licencias originales antes de reutilizar o redistribuir estos archivos.
 
 Este es un proyecto personal e independiente, no afiliado oficialmente con los autores de CodeFormer ni con los desarrolladores de los modelos relacionados.
+
+### Cuaderno de Google Colab
+
+Este Release también incluye `Mejorar_Imagenes_con_IA.zip`, con el cuaderno listo para descargar y subir a Google Colab. Consulta la sección **Empezar en Google Colab** para los pasos de descarga, el enlace directo y la verificación SHA-256.
 
 **Proyecto:** [Improve Images](https://github.com/Pablitus666/Mejorar_Imagenes_con_IA)  
 **Código original de CodeFormer:** https://github.com/sczhou/CodeFormer  
